@@ -1,33 +1,18 @@
 # Netlify configuration file for your React application
 
 [build]
-  command = "npm run build"
-  publish = "dist"  # Update this to your build output directory, which appears to be 'dist'
-  functions = "netlify/functions"
+  command = "npm run build"  # Ensure Vite is available in your dependencies
+  publish = "dist"            # This should match your Vite output directory
+  functions = "netlify/functions"  # Adjust if you have serverless functions
 
-  ## Uncomment to use this redirect for Single Page Applications like create-react-app.
-  ## Not needed for static site generators.
-  # [[redirects]]
-  #   from = "/*"
-  #   to = "/index.html"
-  #   status = 200
-
-  ## (optional) Settings for Netlify Dev
-  ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
-  # [dev]
-  #   command = "yarn start"  # Command to start your dev server
-  #   port = 3000  # Port that the dev server will be listening on
-  #   publish = "dist"  # Folder with the static content for _redirect file
-
-  ## More info on configuring this file: https://ntl.fyi/file-based-build-config
-
-# Redirect rules (if necessary)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true  # Ensure this redirect is always applied
+  ## Redirect rules for Single Page Applications
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+    force = true  # Ensure this redirect is always applied
 
 # Environment variables (optional)
 [build.environment]
   NODE_ENV = "production"  # Set NODE_ENV to production for optimized builds
+  NODE_VERSION = "18"      # Specify your desired Node version (if needed)
